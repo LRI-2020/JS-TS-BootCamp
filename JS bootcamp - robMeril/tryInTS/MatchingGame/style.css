@@ -1,0 +1,29 @@
+﻿.col-2:before
+{
+    content: '';
+    width: 0;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    padding-top: 100%;
+    
+}
+
+.col-2{
+    white-space: nowrap;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 5px white;
+    padding: 0;
+    text-align: center;
+    background-color: pink;
+}
+
+.text-hidden{
+    font-size:0;
+}
+
+.container{
+    max-width:60%;
+}
+
