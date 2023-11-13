@@ -1,6 +1,7 @@
 ﻿function AddCartToRows(shuffleCards: HTMLDivElement[]) {
     
     if(shuffleCards.length !== 24){
+ //   if(shuffleCards.length !== 4){
         throw new Error("Wrong number of cards! Should have 24 cards")
     }
     
@@ -18,9 +19,11 @@
 
 function createCards() {
     let gameWrapper = document.querySelector('div.gameWrapper')!;
-    
+    gameWrapper.innerHTML='';
     let cards: HTMLDivElement[] = [];
-    for (let i = 0; i < 12; i++) {
+
+   for (let i = 0; i < 12; i++) {
+  //  for (let i = 0; i < 2; i++) {
         cards.push(createCard(i + 1));
     }
     let shuffleCards = duplicateCards(cards).sort((a, b) => 0.5 - Math.random());

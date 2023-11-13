@@ -33,9 +33,34 @@ body{
 
 .btn{
 background-color: pink;
+    color:white;
+
 
 }
 button>a{
     text-decoration: none;
     color:white;
+}
+
+main{
+    position:relative;
+}
+
+.endGame{
+    position: absolute;
+    top: 40%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    color:black;
+}
+
+.endGame>h1{
+    font-size: 7rem;
+    white-space: nowrap;
+
+}
+
+.hidden{
+    display:none;
 }

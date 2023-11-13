@@ -1,9 +1,19 @@
 ﻿import {createCards} from "./cardsGenerator.js";
 import {cardListener} from "./matchingGame.js";
 
-createCards();
+startGame();
 
+let newGame = document.querySelector('.newGame')! as HTMLButtonElement;
 
-let allCards = document.querySelectorAll('.square')!;
+newGame.addEventListener('click', function(){
+    
+    startGame();
+})
 
-allCards.forEach(c => cardListener(c as HTMLDivElement));
+function startGame(){
+    document.querySelector('.endGame')!.classList.add('hidden');
+    createCards();
+    let allCards = document.querySelectorAll('.square')!;
+    allCards.forEach(c => cardListener(c as HTMLDivElement));
+
+}

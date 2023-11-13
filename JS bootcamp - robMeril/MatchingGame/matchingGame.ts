@@ -29,6 +29,21 @@ function ResetCards(cards: HTMLDivElement[]) {
 
 }
 
+function CheckEndGame() {
+    
+    let allCards = document.querySelectorAll('.square');
+    let end = true;
+    allCards.forEach(c => {
+        if(!c.classList.contains('won'))
+            end=false;
+    });
+    
+    if(end){
+        document.querySelector('.endGame')!.classList.remove('hidden');
+    }
+    
+}
+
 function checkSelectedCards(selectedCards: HTMLDivElement[]) {
 
     if (selectedCards.length != 2) {
@@ -38,6 +53,7 @@ function checkSelectedCards(selectedCards: HTMLDivElement[]) {
     if (CheckMatch(selectedCards[0], selectedCards[1])) {
 
         SetWon(selectedCards);
+        CheckEndGame();
 
     } else {
         setTimeout(() => ResetCards(selectedCards), 1000);
@@ -53,7 +69,7 @@ function SelectCard(card: HTMLDivElement) {
 function cardListener(card: HTMLDivElement) {
 
     card.addEventListener('click', function () {
-
+        
             let selectedCards = document.querySelectorAll('.square.selected')!;
 
             if (selectedCards.length < 2 && isSelectable(card)) {

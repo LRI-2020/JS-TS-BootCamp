@@ -19,12 +19,24 @@ function ResetCards(cards) {
         c.classList.remove("selected");
     });
 }
+function CheckEndGame() {
+    let allCards = document.querySelectorAll('.square');
+    let end = true;
+    allCards.forEach(c => {
+        if (!c.classList.contains('won'))
+            end = false;
+    });
+    if (end) {
+        document.querySelector('.endGame').classList.remove('hidden');
+    }
+}
 function checkSelectedCards(selectedCards) {
     if (selectedCards.length != 2) {
         throw new Error("Should only have 2 cards to check");
     }
     if (CheckMatch(selectedCards[0], selectedCards[1])) {
         SetWon(selectedCards);
+        CheckEndGame();
     }
     else {
         setTimeout(() => ResetCards(selectedCards), 1000);
