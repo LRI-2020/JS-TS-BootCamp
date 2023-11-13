@@ -23,7 +23,7 @@ img {
 * Button Styles
 * https://fdossena.com/?p=html5cool/buttons/i.frag
 */
-button {
+button, .btn {
     color: #fff;
     text-transform: uppercase;
     background: #60a3bc;
@@ -31,6 +31,11 @@ button {
     border-radius: 50px;
     display: inline-block;
     border: none;
+}
+
+.btn>a{
+    color:white;
+    text-decoration: none;
 }
 
 /**
