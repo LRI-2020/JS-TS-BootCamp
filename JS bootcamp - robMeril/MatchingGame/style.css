@@ -27,3 +27,15 @@
     max-width:60%;
 }
 
+body{
+    background-color: black;
+}
+
+.btn{
+background-color: pink;
+
+}
+button>a{
+    text-decoration: none;
+    color:white;
+}

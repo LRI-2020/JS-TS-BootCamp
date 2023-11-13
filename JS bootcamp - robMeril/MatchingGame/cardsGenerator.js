@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCards = void 0;
 function AddCartToRows(shuffleCards) {
     if (shuffleCards.length !== 24) {
         throw new Error("Wrong number of cards! Should have 24 cards");
@@ -24,7 +21,6 @@ function createCards() {
     let shuffleCards = duplicateCards(cards).sort((a, b) => 0.5 - Math.random());
     AddCartToRows(shuffleCards).forEach(r => gameWrapper.appendChild(r));
 }
-exports.createCards = createCards;
 function duplicateCards(cards) {
     let res = [...cards];
     for (let card of cards) {
@@ -39,3 +35,4 @@ function createCard(id) {
     card.innerText = `${id}`;
     return card;
 }
+export { createCards };
