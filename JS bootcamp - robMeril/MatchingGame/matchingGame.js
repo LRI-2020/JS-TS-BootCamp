@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.cardListener = void 0;
 function CheckMatch(card1, card2) {
     // let value1 = card1.querySelector(".value")! as HTMLParagraphElement;
     // let value2 = card2.querySelector(".value")! as HTMLParagraphElement;
@@ -50,4 +47,4 @@ function cardListener(card) {
         }
     });
 }
-exports.cardListener = cardListener;
+export { cardListener };
