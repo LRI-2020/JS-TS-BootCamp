@@ -1,0 +1,33 @@
+﻿.container{
+    max-width:50%;
+}
+
+main{
+max-height: 600px;
+}
+
+.btn{
+    background-color: yellow;
+    font-weight: bold;
+}
+
+a{
+    text-decoration :none;
+    color:black;
+
+}
+
+.dogWrapper{
+    background-color: white;
+    color:black;
+    max-height:100%;
+}
+
+body{
+    background-color: white;
+    color:black;
+}
+
+img{
+    max-height: 100%;
+}
