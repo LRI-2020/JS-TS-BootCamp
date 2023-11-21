@@ -17,8 +17,13 @@
 #pDis{
     animation-name:slide;
     animation-delay: 5s;
-    animation-duration:2s;
     animation-iteration-count:1;
+}
+
+#hexagon:hover{
+    animation-name: rotateRight;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes drop {
@@ -34,5 +39,16 @@
 
 @keyframes slide {
     100% { transform: translateX(500%); display:none}
+}
+
+@keyframes rotateRight {
+   
+    0%{
+        transform: rotate(45deg)
+    }   
+    100%{
+        transform: rotate(45deg)
+    }
+    
 }
 
