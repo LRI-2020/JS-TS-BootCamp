@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <script src="./../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!--    <script defer type="module" src="./app.js"></script>-->
+    <script defer type="module" src="./app.js"></script>
     <link rel="stylesheet" type="text/css" href="./../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>The Dog Therapy</title>
+    <title>Front-End cookBook</title>
 </head>
 <body>
 <div class="container">
@@ -16,19 +16,33 @@
             <button class="btn my-1"><a href="../../index.html">Menu</a></button>
         </nav>
     </header>
-    <main class="d-flex flex-column justify-content-center align-items-center">
-        <h1 id="blue_dot_title" class="p-2">Blue Dot</h1>
-        <div id="blue_dot" class="p-2"></div>
-        <p id="pDis" class="p-2">This paragraph will disappear in 5 seconds</p>
+    <main class="d-flex justify-content-around">
+        
+        <div class="blue_dot_wrapper d-flex flex-column justify-content-center align-items-center">
+            <h1 id="blue_dot_title" class="p-2">Blue Dot</h1>
+            <div id="blue_dot" class="p-2"></div>
+            <p id="pDis" class="p-2">This paragraph will disappear in 5 seconds</p>
+        </div>
+        
 
         <div id="container" class="my-4">
             <img id="hexagon" src="https://github.com/robgmerrill/online-course-images/blob/master/clown.png?raw=true"/>
         </div>
 
-        <div class="rect" id="rec1"></div>
-        <div class="rect" id="rec2"></div>
-        <div class="rect" id="rec3"></div>
-        <div class="rect" id="rec4"></div>
+            <div class="rectChallenge">
+                <div class="rect" id="rec1"></div>
+                <div class="rect" id="rec2"></div>
+                <div class="rect" id="rec3"></div>
+                <div class="rect" id="rec4"></div>
+            </div>
+        
+        <div class="christmasChallenge d-flex flex-column">
+            <img src="https://github.com/robgmerrill/online-course-images/blob/master/001-santa-claus.png?raw=true"/>
+            <h1>Count days till next christmas</h1>
+            <!-- h2 tag with an id of countdown that we will populate with moment library  -->
+            <h2 id="countdown"></h2>
+        </div>
+
 
         
     </main>
