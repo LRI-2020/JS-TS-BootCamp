@@ -6,16 +6,16 @@
 }
 
 #blue_dot_title{
-    animation: drop 1s 1, appear 1s 1;
+    animation: drop 1s 1;
     
 }
 
 #blue_dot{
-    animation:appear 3s 1;
+    animation:disappear 4s 1;
 }
 
 #pDis{
-    animation-name:disappear;
+    animation-name:slide;
     animation-delay: 5s;
     animation-duration:2s;
     animation-iteration-count:1;
@@ -26,12 +26,13 @@
         transform : translateY(-100%)}    
 }
 
-@keyframes appear {
-    0% { opacity:0;}
+@keyframes disappear {
+    0% { opacity:100%;}
+    50% { opacity:0;}
     100% { opacity:100%;}
 }
 
-@keyframes disappear {
+@keyframes slide {
     100% { transform: translateX(500%); display:none}
 }
 
