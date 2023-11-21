@@ -26,6 +26,42 @@
 
 }
 
+#rec1:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+
+}
+#rec2:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+
+}
+#rec3:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-in;
+
+}
+#rec4:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+
+}
+
+.rect{
+    width:100px;
+    height: 100px;
+    background-color: red;
+    margin-bottom: 10px;
+}
+
 @keyframes drop {
     0% {
         transform: translateY(-100%)
