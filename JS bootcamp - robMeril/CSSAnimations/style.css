@@ -1,0 +1,37 @@
+﻿#blue_dot{
+    width:100px;
+    height:100px;
+    background-color: deepskyblue;
+    border-radius: 50%;
+}
+
+#blue_dot_title{
+    animation: drop 1s 1, appear 1s 1;
+    
+}
+
+#blue_dot{
+    animation:appear 3s 1;
+}
+
+#pDis{
+    animation-name:disappear;
+    animation-delay: 5s;
+    animation-duration:2s;
+    animation-iteration-count:1;
+}
+
+@keyframes drop {
+    0% { 
+        transform : translateY(-100%)}    
+}
+
+@keyframes appear {
+    0% { opacity:0;}
+    100% { opacity:100%;}
+}
+
+@keyframes disappear {
+    100% { transform: translateX(500%); display:none}
+}
+
