@@ -18,15 +18,13 @@ function createExpense(title, amount) {
     let id = ++lastId;
     let expense = new Expense(id, title, amount);
     console.log(expense.id);
-    if (storeExpense(expense)) {
+    if (addExpense(expense)) {
         return true;
     }
     console.log("error has occurred, expense not save");
     return false;
 }
-function storeExpense(expense) {
-    let expenses = getExpenses();
-    expenses.push(expense);
+function storeExpenses(expenses) {
     try {
         localStorage.setItem("expenses", JSON.stringify(expenses));
         return true;
@@ -36,6 +34,11 @@ function storeExpense(expense) {
         return false;
     }
 }
+function addExpense(expense) {
+    let expenses = getExpenses();
+    expenses.push(expense);
+    return storeExpenses(expenses);
+}
 function displayExpenseForm() {
 }
-export { createExpense };
+export { createExpense, storeExpenses };

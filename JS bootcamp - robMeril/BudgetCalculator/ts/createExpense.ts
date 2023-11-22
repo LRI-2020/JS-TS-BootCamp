@@ -23,24 +23,29 @@ function createExpense(title:string,amount:number):boolean{
     let id:number = ++lastId;
     let expense:Expense = new Expense(id,title,amount);
     console.log(expense.id);
-    if(storeExpense(expense)){
+    if(addExpense(expense)){
         return true;   
     }
     console.log("error has occurred, expense not save");
     return false;
 }
 
-function storeExpense(expense:IExpense):boolean{
-    let expenses: IExpense[] = getExpenses();
-    expenses.push(expense);
+function storeExpenses(expenses: IExpense[]) {
     try{
         localStorage.setItem("expenses",JSON.stringify(expenses));
         return true
-    }    
+    }
     catch(error){
         console.log(error);
         return false;
     }
+}
+
+function addExpense(expense:IExpense):boolean{
+    let expenses: IExpense[] = getExpenses();
+    expenses.push(expense);
+        return storeExpenses(expenses);
+   
 }
 
 function displayExpenseForm(){
@@ -49,4 +54,4 @@ function displayExpenseForm(){
     
 }
 
-export {createExpense};
+export {createExpense, storeExpenses};

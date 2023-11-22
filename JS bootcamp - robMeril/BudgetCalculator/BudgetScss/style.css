@@ -1,5 +1,5 @@
-main {
-  background-color: snow;
+*[contenteditable=true] {
+  border: solid blue 1px;
 }
 
 /*# sourceMappingURL=style.css.map */
