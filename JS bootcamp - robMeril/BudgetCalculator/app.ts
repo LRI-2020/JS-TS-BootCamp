@@ -1,4 +1,5 @@
-﻿import {displayExpenses} from "./displayExpenses.js";
+﻿import {displayExpenses} from "./ts/displayExpenses.js";
+import {startAllListeners} from "./ts/userActionsListeners.js";
 
 let expense1 = {
     id:1,
@@ -22,3 +23,4 @@ localStorage.setItem("expenses",JSON.stringify(myExpenses));
 
 
 displayExpenses();
+startAllListeners();
