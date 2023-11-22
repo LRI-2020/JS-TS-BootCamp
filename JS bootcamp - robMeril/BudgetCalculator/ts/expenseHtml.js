@@ -1,6 +1,10 @@
 let expenseHtmlTemp = `<div class="expenses_info mx-2">
     <h4 class="expense_title" pattern="^\\d*(\\.\\d{0,2})?$"></h4>
-    <h5 class="expense_amount" pattern="^\\d*(\\.\\d{0,2})?$"></h5>
+    <div class="d-flex flex-inline">
+        <h5 class="expense_amount px-1" pattern="^\\d*(\\.\\d{0,2})?$"></h5>
+    <h5 >EUR</h5>
+</div>
+
 </div>
 <div class="expense_actions d-inline-flex">
 <button class="btn btn-light p-0 w-50 mx-1 save_expense_btn d-none">Save</button> 

@@ -13,5 +13,13 @@ function displayExpenses() : void{
     }
 }
 
-export {displayExpenses}
+function displayTotal(){
+    let expenses : IExpense[] = getExpenses();
+    let total:number = expenses.reduce((acc,ex,i,arr) => 
+        acc+=ex.amount, 0);
+    let totalEl = document.querySelector('.total_expenses_value')! as HTMLTitleElement;
+    totalEl.innerText=total.toString()+" Eur";
+}
+
+export {displayExpenses, displayTotal}
 

@@ -12,11 +12,12 @@
 <div class="container">
 
     <header class="bg-primary w-100 d-inline-flex justify-content-center align-items-center">
+        <nav class="center my-1">
+            <button class="btn btn-dark my-1"><a href="../../index.html">Menu</a></button>
+        </nav>
         <h1 class="text-center mx-5">Budget Calculator</h1>
         <button class="add_expense btn btn-dark"> Add new expense</button>
-        <nav class="center my-1">
-            <button class="btn my-1"><a href="../../index.html">Menu</a></button>
-        </nav>
+        
     </header>
 
 
@@ -37,9 +38,12 @@
                 <button class="btn btn-dark create_expense w-50 align-self-center" type="submit">Create Expense</button>
             </form>
         </div>
-        <h2 class="ps-5 py-4">Total Expenses : </h2>
-        <h2 class="ps-5 py-4">Expenses List : </h2>
-        <div id="expensesWrapper" class="expensesWrapper row mx-auto d-flex flex-column justify-content-start align-items-center" >
+        <div class="d-flex flex-inline m-4">
+            <h2 class="px-1">Total Expenses : </h2>
+            <h2 class="total_expenses_value px-1"></h2>
+        </div>
+        <h2 class="m-4">Expenses List : </h2>
+        <div id="expensesWrapper" class="expensesWrapper row mx-auto d-flex flex-column justify-content-start align-items-center mb-4" >
             
         </div>
         

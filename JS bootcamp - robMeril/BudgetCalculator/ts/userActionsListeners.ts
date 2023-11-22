@@ -1,6 +1,6 @@
 ﻿import {createExpense} from "./createExpense.js";
 import {updateExpense} from "./updateExpense.js";
-import {displayExpenses} from "./displayExpenses.js";
+import {displayExpenses, displayTotal} from "./displayExpenses.js";
 import {deleteExpense} from "./deleteExpense.js";
 
 
@@ -140,6 +140,7 @@ function saveExpenseListener(){
 
 function refreshExpenses() {
     displayExpenses();
+    displayTotal();
     CheckAmountFieldListener();
     updateExpenseListener();
     saveExpenseListener()
