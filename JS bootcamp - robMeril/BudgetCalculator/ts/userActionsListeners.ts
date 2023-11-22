@@ -1,12 +1,15 @@
 ﻿import {createExpense} from "./createExpense.js";
+import {updateExpense} from "./updateExpense.js";
+import {displayExpenses} from "./displayExpenses.js";
 
 
 // let createExpenseForm = document.querySelector('form.add_expense_form')! as HTMLFormElement;
 function startAllListeners(){
     displayCreateForm();
-    CheckAmountField();
+    CheckAmountFieldListener();
     createExpenseListener();
     updateExpenseListener();
+    saveExpenseListener()
     exitBtnListener();  
 }
 function displayCreateForm(){
@@ -26,7 +29,8 @@ function isValidInput(value:string,pattern:string):boolean{
     return regex.test(value);
 }
 
-function CheckAmountField(){
+
+function CheckAmountFieldListener(){
     let newAmountInput = document.getElementById('new_expense_amount')! as HTMLInputElement;
 //Validate form field
     newAmountInput.addEventListener('keyup', function(){
@@ -76,26 +80,19 @@ function createExpenseListener(){
 }
 
 function makeExpenseEditable(id: number) {
-    let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' +id.toString() + '"' + ']') as HTMLInputElement;
-    let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' +id.toString() + '"' + ']') as HTMLInputElement;
-    
-    if(titleEl !== undefined || amountEl !== undefined){
-        titleEl.setAttribute('contenteditable',"true");
-        amountEl.setAttribute('contenteditable',"true");
-    }
-    
-    else{
+    let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' + id.toString() + '"' + ']') as HTMLInputElement;
+    let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' + id.toString() + '"' + ']') as HTMLInputElement;
+    let saveBtn = document.querySelector('button.save_expense_btn[expense_id=' + '"' + id.toString() + '"' + ']') as HTMLButtonElement;
+
+    if (titleEl !== undefined || amountEl !== undefined) {
+        titleEl.setAttribute('contenteditable', "true");
+        amountEl.setAttribute('contenteditable', "true");
+        saveBtn.classList.remove('d-none');
+    } else {
         alert('cannot edit the expense');
     }
-    
-    // if((amountEl?.value && titleEl?.value && amountEl.getAttribute('pattern') !== null && amountEl.getAttribute('pattern') !== undefined)){
-    //
-    //     if(isValidInput(amountEl?.value, amountEl.getAttribute('pattern')!)){
-    //        
-    //         ti
-    //     }
-    // }
-    //
+
+
 }
 
 function updateExpenseListener(){
@@ -103,7 +100,38 @@ function updateExpenseListener(){
     for(let btn of updateBtns){
         btn.addEventListener('click', function(){
             let id:number = Number(btn.getAttribute('expense_id')!);
-            makeExpenseEditable(id);            
+            makeExpenseEditable(id); 
+            btn.classList.add("d-none");
+        })
+    }
+}
+
+function saveExpenseListener(){
+    let saveBtns = document.querySelectorAll('button.save_expense_btn')! as unknown as HTMLButtonElement[];
+    for(let btn of saveBtns){
+        btn.addEventListener('click', function(){
+            let id:number = Number(btn.getAttribute('expense_id')!);
+            let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' + id.toString() + '"' + ']') as HTMLTitleElement;
+            let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' + id.toString() + '"' + ']') as HTMLTitleElement;
+            if((amountEl?.innerText 
+                && titleEl?.innerText
+                && amountEl.getAttribute('pattern') !== null 
+                && amountEl.getAttribute('pattern') !== undefined)){
+
+                if(isValidInput(amountEl.innerHTML, amountEl.getAttribute('pattern')!)){
+
+                    let updateRes = updateExpense(id,titleEl.innerText, Number(amountEl.innerText));
+                    
+                    if(!updateRes){
+                        alert('an error has occurred, expense not updated');
+                    }
+                    
+                    displayExpenses();
+                    startAllListeners();
+                }
+            }
+
+            btn.classList.add("d-none");
         })
     }
 }

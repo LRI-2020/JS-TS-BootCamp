@@ -1,10 +1,13 @@
 import { createExpense } from "./createExpense.js";
+import { updateExpense } from "./updateExpense.js";
+import { displayExpenses } from "./displayExpenses.js";
 // let createExpenseForm = document.querySelector('form.add_expense_form')! as HTMLFormElement;
 function startAllListeners() {
     displayCreateForm();
-    CheckAmountField();
+    CheckAmountFieldListener();
     createExpenseListener();
     updateExpenseListener();
+    saveExpenseListener();
     exitBtnListener();
 }
 function displayCreateForm() {
@@ -20,7 +23,7 @@ function isValidInput(value, pattern) {
     let regex = new RegExp(pattern, 'g');
     return regex.test(value);
 }
-function CheckAmountField() {
+function CheckAmountFieldListener() {
     let newAmountInput = document.getElementById('new_expense_amount');
     //Validate form field
     newAmountInput.addEventListener('keyup', function () {
@@ -62,21 +65,15 @@ function createExpenseListener() {
 function makeExpenseEditable(id) {
     let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' + id.toString() + '"' + ']');
     let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' + id.toString() + '"' + ']');
+    let saveBtn = document.querySelector('button.save_expense_btn[expense_id=' + '"' + id.toString() + '"' + ']');
     if (titleEl !== undefined || amountEl !== undefined) {
         titleEl.setAttribute('contenteditable', "true");
         amountEl.setAttribute('contenteditable', "true");
+        saveBtn.classList.remove('d-none');
     }
     else {
         alert('cannot edit the expense');
     }
-    // if((amountEl?.value && titleEl?.value && amountEl.getAttribute('pattern') !== null && amountEl.getAttribute('pattern') !== undefined)){
-    //
-    //     if(isValidInput(amountEl?.value, amountEl.getAttribute('pattern')!)){
-    //        
-    //         ti
-    //     }
-    // }
-    //
 }
 function updateExpenseListener() {
     let updateBtns = document.querySelectorAll('button.updateBtn');
@@ -84,6 +81,31 @@ function updateExpenseListener() {
         btn.addEventListener('click', function () {
             let id = Number(btn.getAttribute('expense_id'));
             makeExpenseEditable(id);
+            btn.classList.add("d-none");
+        });
+    }
+}
+function saveExpenseListener() {
+    let saveBtns = document.querySelectorAll('button.save_expense_btn');
+    for (let btn of saveBtns) {
+        btn.addEventListener('click', function () {
+            let id = Number(btn.getAttribute('expense_id'));
+            let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' + id.toString() + '"' + ']');
+            let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' + id.toString() + '"' + ']');
+            if (((amountEl === null || amountEl === void 0 ? void 0 : amountEl.innerText)
+                && (titleEl === null || titleEl === void 0 ? void 0 : titleEl.innerText)
+                && amountEl.getAttribute('pattern') !== null
+                && amountEl.getAttribute('pattern') !== undefined)) {
+                if (isValidInput(amountEl.innerHTML, amountEl.getAttribute('pattern'))) {
+                    let updateRes = updateExpense(id, titleEl.innerText, Number(amountEl.innerText));
+                    if (!updateRes) {
+                        alert('an error has occurred, expense not updated');
+                    }
+                    displayExpenses();
+                    startAllListeners();
+                }
+            }
+            btn.classList.add("d-none");
         });
     }
 }

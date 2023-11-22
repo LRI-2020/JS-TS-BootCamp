@@ -5,6 +5,7 @@ import {getExpenses} from "./expensesRepo.js";
 function displayExpenses() : void{
     let expenses : IExpense[] = getExpenses();
     let expensesWrapper = document.getElementById('expensesWrapper')! as HTMLDivElement;
+    expensesWrapper.innerHTML="";
 
     for(let expense of expenses){
 

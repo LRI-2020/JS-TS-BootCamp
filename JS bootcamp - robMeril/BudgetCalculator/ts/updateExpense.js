@@ -1,6 +1,6 @@
 import { Expense } from "./expenses.js";
-import { getExpenses } from "./expensesRepo";
-import { storeExpenses } from "./createExpense";
+import { getExpenses } from "./expensesRepo.js";
+import { storeExpenses } from "./createExpense.js";
 function getExpenseById(id) {
     let expenses = getExpenses();
     let expense = expenses.find(e => e.id === id);
@@ -22,9 +22,10 @@ function updateExpense(expenseId, title, amount) {
         let expenses = getExpenses();
         let index = expenses.findIndex(e => e.id === expenseId);
         expenses[index] = new Expense(expenseId, title, amount);
-        storeExpenses(expenses);
+        return storeExpenses(expenses);
     }
     catch (error) {
         alert('Expense cannot be updated.');
     }
 }
+export { updateExpense };
