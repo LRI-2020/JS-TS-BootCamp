@@ -24,7 +24,7 @@ function createHtmlExpense(id, title, amount) {
 }
 function generateExpenseDiv() {
     let expense = document.createElement('div');
-    expense.classList.add("expense", "d-inline-flex", "align-items-center", "shadow", "p-3", "my-2");
+    expense.classList.add("expense", "d-inline-flex", "align-items-center", "shadow", "p-3", "my-2", "justify-content-between");
     expense.innerHTML = expenseHtmlTemp;
     return expense;
 }
