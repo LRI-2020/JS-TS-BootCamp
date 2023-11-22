@@ -27,11 +27,11 @@
                 <button class="exit btn btn-light align-self-end border-1" to-close="add_expense_Wrapper"> X </button>
                 <div class="my-1">
                     <label class=form-label" for="new_expense_title"> Expense title : </label>
-                    <input id="new_expense_title" class="form-control" type="text" value="" name="expense_title"/>
+                    <input id="new_expense_title" class="form-control" type="text" value="" name="expense_title" required/>
                 </div>
                 <div class="my-1">
                     <label class="form-label" for="new_expense_amount"> Expense amount : </label>
-                    <input class="form-control" id="new_expense_amount" type="number" step=".01" min=0.1 pattern="^\d*(\.\d{0,2})?$" value="" name="expense_title"/>
+                    <input class="form-control" id="new_expense_amount" type="number" step=".01" min=0.1 pattern="^\d*(\.\d{0,2})?$" value="" required name="expense_amount"/>
                 </div>
 
                 <button class="btn btn-dark create_expense w-50 align-self-center" type="submit">Create Expense</button>

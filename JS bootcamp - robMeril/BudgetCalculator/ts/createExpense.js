@@ -2,6 +2,9 @@ import { getExpenses } from "./expensesRepo.js";
 import { Expense } from "./expenses.js";
 function getLastId() {
     let expenses = getExpenses();
+    if (expenses.length === 0) {
+        return 0;
+    }
     return (expenses.reduce((previousValue, currentValue, currentIndex, array) => {
         let res = array.find(e => e.id === Math.max(previousValue.id, currentValue.id));
         if (res === undefined) {
@@ -14,6 +17,7 @@ function createExpense(title, amount) {
     let lastId = getLastId();
     let id = ++lastId;
     let expense = new Expense(id, title, amount);
+    console.log(expense.id);
     if (storeExpense(expense)) {
         return true;
     }

@@ -22,5 +22,13 @@ class Expense {
     set title(value) {
         this._title = value;
     }
+    //Call auto by JSON.Stringify and allow to keep public properties instead of private when stringify
+    toJSON() {
+        return {
+            id: this._id,
+            title: this._title,
+            amount: this._amount
+        };
+    }
 }
 export { Expense };

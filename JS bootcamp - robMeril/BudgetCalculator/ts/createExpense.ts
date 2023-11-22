@@ -4,6 +4,10 @@ import {Expense, IExpense} from "./expenses.js";
 function getLastId() {
     
     let expenses:IExpense[] = getExpenses();
+    
+    if(expenses.length ===0){
+        return 0;
+    }
     return (expenses.reduce((previousValue,currentValue,currentIndex,array) => {
             let res = array.find(e => e.id === Math.max(previousValue.id,currentValue.id));
             if( res === undefined){
@@ -14,11 +18,11 @@ function getLastId() {
         )).id;
 }
 
-function createExpense(title:string,amount:Float32Array):boolean{
-    let lastId = getLastId();
+function createExpense(title:string,amount:number):boolean{
+    let lastId:number = getLastId();
     let id:number = ++lastId;
     let expense:Expense = new Expense(id,title,amount);
-    
+    console.log(expense.id);
     if(storeExpense(expense)){
         return true;   
     }
@@ -27,7 +31,7 @@ function createExpense(title:string,amount:Float32Array):boolean{
 }
 
 function storeExpense(expense:IExpense):boolean{
-    let expenses = getExpenses();
+    let expenses: IExpense[] = getExpenses();
     expenses.push(expense);
     try{
         localStorage.setItem("expenses",JSON.stringify(expenses));

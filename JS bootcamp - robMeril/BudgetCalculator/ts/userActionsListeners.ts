@@ -1,4 +1,5 @@
-﻿import {displayExpenses} from "./displayExpenses";
+﻿import {displayExpenses} from "./displayExpenses.js";
+import {createExpense} from "./createExpense.js";
 
 
 let addNewExpenseBtn = document.querySelector('.add_expense')! as HTMLButtonElement;
@@ -6,13 +7,13 @@ let addNewExpenseBtn = document.querySelector('.add_expense')! as HTMLButtonElem
 let createExpenseBtn = document.querySelector('button.create_expense')! as HTMLButtonElement;
 let add_expense_Wrapper  =document.querySelector('div.add_expense_Wrapper')! as HTMLDivElement;
 let exitBtns = document.querySelectorAll('button.exit')! as unknown as HTMLButtonElement[];
-
+let amountInput = document.getElementById('new_expense_amount')! as HTMLInputElement;
+let expense_title_input = document.getElementById('new_expense_title')! as HTMLInputElement;
 function startAllListeners(){
     displayCreateForm();
     CheckAmountField();
-    exitBtn();
-    
-    
+    createExpenseListener();
+    exitBtn();  
 }
 function displayCreateForm(){
     //Display form when create expense is clicked
@@ -32,7 +33,6 @@ function isValidInput(value:string,pattern:string):boolean{
 function CheckAmountField(){
 
 //Validate form field
-    let amountInput = document.getElementById('new_expense_amount')! as HTMLInputElement;
     amountInput.addEventListener('keyup', function(){
 
         if(!isValidInput(amountInput.value, amountInput.getAttribute('pattern')!)){
@@ -54,6 +54,23 @@ function exitBtn(){
             elToClose.classList.add('d-none');
         })
     }
+}
+
+function createExpenseListener(){
+    createExpenseBtn.addEventListener('click',function(){
+        //check if all valid
+        if(isValidInput(amountInput.value, amountInput.getAttribute('pattern')!) 
+            && expense_title_input.value !== null
+            && expense_title_input.value !== undefined
+            && expense_title_input.value.length > 0){            
+            createExpense(expense_title_input.value,parseFloat(amountInput.value));
+        }
+        
+        else{
+            alert('an error occurred, expense cannot be  created.')
+        }
+    })
+    
 }
 
 export {startAllListeners};
