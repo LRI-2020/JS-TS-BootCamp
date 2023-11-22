@@ -1,0 +1,100 @@
+﻿#blue_dot {
+    width: 100px;
+    height: 100px;
+    background-color: deepskyblue;
+    border-radius: 50%;
+}
+
+#blue_dot_title {
+    animation: drop 1s 1;
+
+}
+
+#blue_dot {
+    animation: disappear 4s 1;
+}
+
+#pDis {
+    animation-name: slide;
+    animation-delay: 5s;
+    animation-iteration-count: 1;
+}
+
+#hexagon:hover {
+    transform: rotate(45deg);
+    transition: transform .9s;
+
+}
+
+#rec1:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+
+}
+#rec2:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+
+}
+#rec3:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-in;
+
+}
+#rec4:hover{
+    transform: scaleX(300%);
+    transform-origin: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+
+}
+
+.rect{
+    width:100px;
+    height: 100px;
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-100%)
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes slide {
+    100% {
+        transform: translateX(500%);
+        display: none
+    }
+}
+
+/*@keyframes rotateRight {*/
+/*   */
+/*    0%{*/
+/*        transform: rotate(45deg)*/
+/*    }   */
+/*    100%{*/
+/*        transform: rotate(45deg)*/
+/*    }*/
+/*    */
+/*}*/
+

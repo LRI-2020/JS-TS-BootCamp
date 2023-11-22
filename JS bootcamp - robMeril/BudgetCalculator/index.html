@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer type="module" src="./app.js"></script>
+    <link rel="stylesheet" type="text/css" href="./../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./BudgetScss/style.css">
+    <title>Budget Calculator</title>
+</head>
+<body>
+<div class="container">
+
+    <header class="bg-primary w-100 d-inline-flex justify-content-center align-items-center">
+        <nav class="center my-1">
+            <button class="btn btn-dark my-1"><a href="../../index.html">Menu</a></button>
+        </nav>
+        <h1 class="text-center mx-5">Budget Calculator</h1>
+        <button class="add_expense btn btn-dark"> Add new expense</button>
+        
+    </header>
+
+
+    <main class="d-flex  flex-column justify-content-center px-2 bg-light">
+
+        <div class="d-flex justify-content-center add_expense_Wrapper d-none" id="add_expense_Wrapper">
+            <form class="add_expense_form form d-flex flex-column w-50 shadow p-2 m-2 rounded bg-light">
+                <button class="exit btn btn-light align-self-end border-1" to-close="add_expense_Wrapper"> X </button>
+                <div class="my-1">
+                    <label class=form-label" for="new_expense_title"> Expense title : </label>
+                    <input id="new_expense_title" class="form-control" type="text" value="" name="expense_title" required/>
+                </div>
+                <div class="my-1">
+                    <label class="form-label" for="new_expense_amount"> Expense amount : </label>
+                    <input class="form-control" id="new_expense_amount" type="number" step=".01" min=0.1 pattern="^\d*(\.\d{0,2})?$" value="" required name="expense_amount"/>
+                </div>
+
+                <button class="btn btn-dark create_expense w-50 align-self-center" type="submit">Create Expense</button>
+            </form>
+        </div>
+        <div class="d-flex flex-inline m-4">
+            <h2 class="px-1">Total Expenses : </h2>
+            <h2 class="total_expenses_value px-1"></h2>
+        </div>
+        <h2 class="m-4">Expenses List : </h2>
+        <div id="expensesWrapper" class="expensesWrapper row mx-auto d-flex flex-column justify-content-start align-items-center mb-4" >
+            
+        </div>
+        
+        <button class="btn btn-dark delete_all_expenses w-25"> Delete All Expenses</button>
+        
+        
+    </main>
+
+
+</div>
+</body>
+</html>
