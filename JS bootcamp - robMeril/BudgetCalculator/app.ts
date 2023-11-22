@@ -1,6 +1,5 @@
-﻿import {displayExpenses} from "./ts/displayExpenses.js";
-import {startAllListeners} from "./ts/userActionsListeners.js";
-import {getExpenses} from "./ts/expensesRepo.js";
+﻿import { startAllListeners} from "./ts/userActionsListeners.js";
+import {displayExpenses} from "./ts/displayExpenses.js";
 
 // localStorage.clear();
 displayExpenses();

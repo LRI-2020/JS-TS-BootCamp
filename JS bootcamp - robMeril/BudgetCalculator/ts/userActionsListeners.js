@@ -1,6 +1,7 @@
 import { createExpense } from "./createExpense.js";
 import { updateExpense } from "./updateExpense.js";
 import { displayExpenses } from "./displayExpenses.js";
+import { deleteExpense } from "./deleteExpense.js";
 // let createExpenseForm = document.querySelector('form.add_expense_form')! as HTMLFormElement;
 function startAllListeners() {
     displayCreateForm();
@@ -9,6 +10,8 @@ function startAllListeners() {
     updateExpenseListener();
     saveExpenseListener();
     exitBtnListener();
+    deleteExpenseListener();
+    deleteAllListener();
 }
 function displayCreateForm() {
     let addNewExpenseBtn = document.querySelector('.add_expense');
@@ -89,7 +92,7 @@ function saveExpenseListener() {
     let saveBtns = document.querySelectorAll('button.save_expense_btn');
     for (let btn of saveBtns) {
         btn.addEventListener('click', function () {
-            let id = Number(btn.getAttribute('expense_id'));
+            let id = (btn.getAttribute('expense_id')) !== undefined ? Number(btn.getAttribute('expense_id')) : -1;
             let titleEl = document.querySelector('h4.expense_title[expense_id=' + '"' + id.toString() + '"' + ']');
             let amountEl = document.querySelector('h5.expense_amount[expense_id=' + '"' + id.toString() + '"' + ']');
             if (((amountEl === null || amountEl === void 0 ? void 0 : amountEl.innerText)
@@ -101,12 +104,43 @@ function saveExpenseListener() {
                     if (!updateRes) {
                         alert('an error has occurred, expense not updated');
                     }
-                    displayExpenses();
-                    startAllListeners();
+                    refreshExpenses();
                 }
             }
             btn.classList.add("d-none");
         });
     }
 }
-export { startAllListeners };
+function refreshExpenses() {
+    displayExpenses();
+    CheckAmountFieldListener();
+    updateExpenseListener();
+    saveExpenseListener();
+    exitBtnListener();
+    deleteExpenseListener();
+}
+function deleteExpenseListener() {
+    let deleteBtns = document.querySelectorAll('button.deleteBtn');
+    for (let btn of deleteBtns) {
+        btn.addEventListener('click', function () {
+            let id = (btn.getAttribute('expense_id')) !== undefined ? Number(btn.getAttribute('expense_id')) : -1;
+            if (id > -1) {
+                let delRes = deleteExpense(id);
+                if (!delRes) {
+                    alert('an error occurred, expense not deleted');
+                }
+                else {
+                    refreshExpenses();
+                }
+            }
+        });
+    }
+}
+function deleteAllListener() {
+    let deleteAllBtn = document.querySelector('button.delete_all_expenses');
+    deleteAllBtn.addEventListener('click', function () {
+        localStorage.clear();
+        refreshExpenses();
+    });
+}
+export { startAllListeners, refreshExpenses };
